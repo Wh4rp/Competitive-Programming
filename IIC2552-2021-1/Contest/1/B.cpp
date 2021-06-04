@@ -51,6 +51,7 @@ int main() {
     while (ss >> x) {
       sum += x;
     }
+    // cout << sum / 2 << '\n';
     print(sum / 2);
   }
 
