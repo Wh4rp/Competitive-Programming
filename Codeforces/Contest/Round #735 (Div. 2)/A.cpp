@@ -10,17 +10,18 @@ int main() {
   cin.tie(nullptr);
   cout.setf(ios::fixed);
   cout.precision(10);
-  
-  int n, aux1 = 0;
-  cin >> n;
-  vector<int> v(n);
-  for(int& x : v){
-  	cin >> x;
-  	x += aux;
-  	aux = x;
-  }
-  for(int& x : v){
-  	cout << x << ' ';
+  int t; 
+  cin >> t;
+  while(t--){
+    ll n, maxi = 0LL;
+    cin >> n;
+    vector<ll> v(n);
+    for(ll& x : v)
+    	cin >> x;
+    rep(i, n - 1){
+    	maxi = max(v[i] * v[i + 1], maxi);
+    }
+    cout << maxi << '\n';
   }
   
   return 0;
