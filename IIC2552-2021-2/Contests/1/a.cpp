@@ -12,7 +12,7 @@ int main() {
   cout.precision(10);
   
   ll n;
-  while(cin >> n, n){
+  while(cin >> n && n){
   	ll sol = 0;
   	stack<pair<ll, ll>> s;
   	rep(i, n){
@@ -27,6 +27,7 @@ int main() {
   		}
       s.push({aux, mipos});
   	}
+
   	ll i = n;
   	while (!s.empty()){
       ll area = (i - s.top().second) * s.top().first;
