@@ -11,7 +11,7 @@ int main() {
   cout.setf(ios::fixed);
   cout.precision(10);
   
-  
+  cout << "Hola ss     \n";
   
   return 0;
 }
