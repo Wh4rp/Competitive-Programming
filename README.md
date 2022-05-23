@@ -23,23 +23,14 @@ int main() {
 }
 ```
 
-## [Script to compile and run c++](/Copy%20Paste/CP.sh)
+## [Script to compile and run c++](https://github.com/Wh4rp/CP-Script/blob/bfaafc2ad006064a91dc84a8b8ea8ee915695aad/CP.sh)
 
 If you want run `HelloWorld.cpp` is such to done 
 ```bash
 CP HelloWorld.cpp
 ``` 
-Too acepts input and output file
+Too acepts input and output files
 ```bash
 CP HelloWorld.cpp in.txt out.txt
 ```
-### Options
-- `-f`: forces compilation.
-- `-d`: uses Input and Output path defined on lines 6 and 7.
-
-```bash
-CP -fd HelloWorld.cpp
-```
-Executable files goes to `cache_path` defined in line 5. 
-
-Copy script on `.bashrc` or `.zshrc` to run script anywhere 😉.
+More about it in these [repository](https://github.com/Wh4rp/CP-Script).
