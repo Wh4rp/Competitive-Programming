@@ -40,5 +40,5 @@ CP HelloWorld.cpp in.txt out.txt
 ```bash
 CP -fd HelloWorld.cpp
 ```
-
+Executable files goes to `cache_path` defined in linea 5. 
 Copy `CP` on `.bashrc` to run script anywhere 😉.
