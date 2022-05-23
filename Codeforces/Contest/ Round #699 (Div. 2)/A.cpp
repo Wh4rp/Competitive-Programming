@@ -41,15 +41,7 @@ int main() {
       }
     }
     int x = r - l, y = u - d;
-    /*
-    cout << "llegó al: " << x << ", " << y << '\n';
-    cout << "Se quiere llegar al: " << a << " " << b << '\n';
-    cout << "diferencia de: " << a - x << ", " << b - y << '\n';
-    cout << "r: " << r << " "
-         << "l: " << l << " "
-         << "u: " << u << " "
-         << "d: " << d << "\n";
-        */
+    
     if ((a - x) < 0) {
       si = (si and r >= abs(a - x));
     }
