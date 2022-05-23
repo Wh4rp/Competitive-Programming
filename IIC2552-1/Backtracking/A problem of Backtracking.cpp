@@ -4,13 +4,15 @@ using namespace std;
 #define rep(i, n) for (int i = 0; i < n; ++i)
 #define rep_(i, k, n) for (int i = k; i < n; ++i)
 
-int a[10], v[10], k, sum;
+int a[10], v[10], mask;
+long long sum, k;
 
 bool bt(int l){
   if(sum > k)
     false;
   if (l == 10){
     if(sum <= k){
+      // cout << sum << '\n';
       rep(i, 10){
         cout << v[i] << ' ';
       }
@@ -21,14 +23,16 @@ bool bt(int l){
       return false;
   }
   else{
-    rep_(i, l, 10){
-      
-      swap(v[l], v[i]);
-      sum += v[l] * a[l];
-      if(bt(l+1))
-        return true;
-      sum -= v[l] * a[l];
-      swap(v[l], v[i]);
+    rep(i, 10){
+      if(!(mask & 1<<i)){
+        mask ^= 1<<i;
+        sum += i * a[l];
+        v[l] = i;
+        if(bt(l+1))
+          return true;
+        sum -= i * a[l];
+        mask ^= 1<<i;
+      }
     }
     return false;
   }
@@ -43,6 +47,7 @@ int main() {
   int t;
   cin >> t;
   while(t--){
+    mask = 0;
     sum = 0;
     rep(j, 10)
       v[j] = j;
