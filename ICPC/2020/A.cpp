@@ -11,7 +11,17 @@ int main() {
   cout.setf(ios::fixed);
   cout.precision(10);
   
-  
+  int n, aux1 = 0;
+  cin >> n;
+  vector<int> v(n);
+  for(int& x : v){
+  	cin >> x;
+  	x += aux;
+  	aux = x;
+  }
+  for(int& x : v){
+  	cout << x << ' ';
+  }
   
   return 0;
 }
