@@ -41,4 +41,5 @@ CP HelloWorld.cpp in.txt out.txt
 CP -fd HelloWorld.cpp
 ```
 Executable files goes to `cache_path` defined in linea 5. 
-Copy `CP` on `.bashrc` to run script anywhere 😉.
+
+Copy script on `.bashrc` or `.zshrc` to run script anywhere 😉.
