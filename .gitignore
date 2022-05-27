@@ -31,5 +31,9 @@
 *.out
 *.app
 
+# Others
+/Test
 /prueba
 /.vscode
+in.txt
+out.txt
