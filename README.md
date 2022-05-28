@@ -29,7 +29,7 @@ If you want run `HelloWorld.cpp` is such to done
 ```bash
 CP HelloWorld.cpp
 ``` 
-Too acepts input and output files
+It also acepts input and output files
 ```bash
 CP HelloWorld.cpp in.txt out.txt
 ```
