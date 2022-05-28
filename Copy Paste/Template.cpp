@@ -5,6 +5,8 @@ using namespace std;
 #define rep_(i, k, n) for (int i = k; i < n; ++i)
 using ll = long long;
 
+vector<vector<int>> adj;
+
 int main() {
   ios_base::sync_with_stdio(false);
   cin.tie(nullptr);
@@ -12,6 +14,7 @@ int main() {
   cout.precision(10);
   
   // Solution here
+  cout << "Hello World!" << endl;
   
   return 0;
 }
