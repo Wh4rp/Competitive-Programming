@@ -23,7 +23,7 @@ int main() {
 }
 ```
 
-## [Script to compile and run c++](https://github.com/Wh4rp/CP-Script/blob/bfaafc2ad006064a91dc84a8b8ea8ee915695aad/CP.sh)
+## [Script to compile and run c++](https://github.com/Wh4rp/CP-Script/blob/4f3d5cecfca0114e98d20f59e6f842202484202e/CP.sh)
 
 If you want run `HelloWorld.cpp` is such to done 
 ```bash
