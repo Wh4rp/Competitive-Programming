@@ -9,7 +9,6 @@ struct bounds {
   ll t, l, r;
 };
 
-
 bool inter(bounds a, bounds b){
   if (a.r < b.l || b.r < a.l)
     return false;
