@@ -20,22 +20,11 @@ int main() {
   while (t--){
     ll y, x;
     cin >> y >> x;
-    // cout << diag(max(y,x)) + abs(x - y) * (min(y, x)%2? -1 : 1) << '\n';
     if(x > y){
-      if(y%2){
-        cout << diag(max(y,x)) - (x - y) << '\n';
-      }
-      else{
-        cout << diag(max(y,x)) + (x - y) << '\n';
-      }
+      cout << diag(x) + (x - y) * (x%2? 1 : -1)<< '\n';
     }
     else{
-      if(x%2){
-        cout << diag(max(y,x)) - (y - x) << '\n';
-      }
-      else{
-        cout << diag(max(y,x)) + (y - x) << '\n';
-      }
+      cout << diag(y) + (y - x) * (y%2? -1 : 1)<< '\n';
     }
   }
   
