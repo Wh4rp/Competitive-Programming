@@ -5,20 +5,13 @@
 #         self.right = right
 class Solution:
     def solve(self, root):
-        def all_numbers(node):
+        def sum_tree(node, val):
             if not node:
-                return []
+                return 0
+            val = val * 10 + node.val
+            if not node.left and not node.right:
+                return val
             else:
-                numbers = all_numbers(node.left) + all_numbers(node.right)
-                if not len(numbers):
-                    numbers = [str(node.val)]
-                else:
-                    numbers = [str(node.val) + i for i in numbers]
-                print(numbers)
-                return numbers
-        list_numbers = all_numbers(root)
-        suma = 0
-        print(list_numbers)
-        for i in list_numbers:
-            suma += int(i)
-        return suma
+                return sum_tree(node.left, val) + sum_tree(node.right, val)
+        ans = sum_tree(root, 0)
+        return ans
