@@ -15,7 +15,7 @@ int main() {
   string a;
   cin >> a;
   rep(i, a.length()){
-      s.insert(a[i]);
+    s.insert(a[i]);
   }
   cout << (s.size()%2 == 0? "CHAT WITH HER!\n" : "IGNORE HIM!\n");
   
