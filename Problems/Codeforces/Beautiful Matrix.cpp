@@ -20,6 +20,7 @@ int main() {
 			}
 		}
   }
+  
   cout << abs(a - 2) + abs(b - 2) << '\n';
   return 0;
 }
