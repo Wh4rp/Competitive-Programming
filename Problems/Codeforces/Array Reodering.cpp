@@ -20,16 +20,12 @@ int main() {
   	rep(i, n - 1)
   		rep_(j, i + 1, n){
   			if((a[i] * a[j]) % 2){
-  			  cout << __gcd(a[i], a[j]) << '\n';
   				if(__gcd(a[i], a[j]) != 1) sol++;
   			}
-  			else sol++;
+  			else sol++; 
   		}
-  			
-  		
   	cout << sol << '\n';
   }
-  
   
   return 0;
 }
