@@ -17,21 +17,6 @@ int main() {
     string s;
     cin >> a >> b >> s;
     int n = s.size();
-    if(a + b != n){
-      cout << "-1\n";
-      continue;
-    }
-    bool flag = false;
-    rep(i, n/2){
-      if(s[i] != '?' && s[n - i - 1] != '?' && s[i] != s[n - i - 1]){
-        flag = true;
-        break;
-      }
-    }
-    if(flag){
-      cout << "-1\n";
-      continue;
-    }
     rep(i, n/2){
       if(s[i] != s[n-i-1]){
         if(s[i] == '?' && s[n-i-1] != '?'){
@@ -42,44 +27,27 @@ int main() {
         }
       }
     }
-    int count_0 = count(s.begin(), s.end(), '0');
-    int count_1 = count(s.begin(), s.end(), '1');
-    
-    if(count_0 > a || count_1 > b){
+    a -= count(s.begin(), s.end(), '0');
+    b -= count(s.begin(), s.end(), '1');
+    rep(i, n){
+      if(s[i] == '?'){
+        int limit = i != n-i-1? 1 : 0;
+        if(a > limit){
+            s[i] = s[n-i-1] = '0';
+            a-= limit + 1;
+          }
+        else if(b > limit){
+          s[i] = s[n-i-1] = '1';
+          b -= limit + 1;
+        }
+      }
+    }
+    string v = s;
+    reverse(v.begin(), v.end());
+    if(v != s || a || b)
       cout << "-1\n";
-    }
-    else{
-      rep(i, n / 2){
-        if(count_0 >= a - 1)
-          break;
-        if(s[i] == '?'){
-          s[i] = '0';
-          s[n-i-1] = '0';
-          count_0 += 2;
-        }
-      }
-      rep(i, n / 2){
-        if(count_1 >= b - 1)
-          break;
-        if(s[i] == '?'){
-          s[i] = '1';
-          s[n-i-1] = '1';
-          count_1 += 2;
-        }
-      }
-      if(a - count_0 == 1 && n%2==1){
-        s[n/2] = '0';
-        count_0++;
-      }
-      else if(b - count_1 == 1 && n%2==1){
-        s[n/2] = '1';
-        count_1++;
-      }
-      if(a == count_0 && b == count_1)
-        cout << s << '\n';
-      else
-        cout << "-1\n";
-    }
+    else
+      cout << s << '\n';
   }
   
   return 0;
