@@ -11,17 +11,14 @@ int main() {
   cout.setf(ios::fixed);
   cout.precision(10);
   
-  int n, cont = 0, cont2 = 0, cont3 = 0;
+  int n, cont = 0;
   cin >> n;
   while(n--){
     int a, b, c;
-    a = a == 1;
-    b = b == 1;
-    c = c == 1;
     cin >> a >> b >> c;
     cont += 2 <= (a + b + c);
   }
-
   cout << cont << '\n';
+  
   return 0;
 }
