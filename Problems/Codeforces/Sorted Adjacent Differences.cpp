@@ -29,7 +29,8 @@ int main() {
         sol.push_back(v[j + i]);
         sol.push_back(v[j - i]);
       }
-    }else{
+    }
+    else{
       int j = n/2 - 1;
       rep(i, j + 1){
         sol.push_back(v[j - i]);
