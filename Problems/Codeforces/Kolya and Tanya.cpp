@@ -1,21 +1,13 @@
 #pragma GCC optimize("Ofast")
 #include <bits/stdc++.h>
 using namespace std;
-#define rep(i, n) for (int i = 0; i < n; ++i)
-#define rep_(i, k, n) for (int i = k; i < n; ++i)
+
 using ll = long long;
 
-ll m = 1000000007;
-long long binpow(long long a, long long b) {
-  a %= m;
-  long long res = 1;
-  while (b > 0) {
-    if (b & 1)
-      res = res * a % m;
-    a = a * a % m;
-    b >>= 1;
-  }
-  return res;
+const ll MOD = 1000000007;
+
+ll binpow(ll a, ll b) {
+  return b ? (binpow(a * a % MOD, b >> 1) * (b & 1 ? a : 1)) % MOD : 1;
 }
 
 int main() {
@@ -26,7 +18,8 @@ int main() {
   
   ll n;
   cin >> n;
-  cout << (m + binpow(27, n) - binpow(7, n)) % m << '\n';
+  ll x = binpow(27, n), y = binpow(7, n);
+  cout << (MOD + x - y) % MOD << '\n';
   
   return 0;
 }
