@@ -18,7 +18,7 @@ int main() {
     cin >> n;
     int v[n];
     rep(i, n) cin >> v[i];
-    int mini = v[min_element(v, v+n) - v];
+    int mini = *min_element(v, v+n);
     rep(i, n) if (v[i] > mini) ans++;
     cout << ans << '\n';
   }

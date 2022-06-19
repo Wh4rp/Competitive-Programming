@@ -1,5 +1,5 @@
 #include "../../Template.cpp"
- // Binary Exponentiation
+// Binary Exponentiation
 
 // Recursive implementation
 ll binpow(long long a, long long b) {
