@@ -4,19 +4,12 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-	def solve(self, root, a, b):
-		Union = [root.val]
-		if root.left is not None:
-			Left = self.solve(root.left, a, b)
-			if type(Left) is int:
-					return Left
-			Union += Left
-		if root.right is not None:
-			Right = self.solve(root.right, a, b)
-			if type(Right) is int:
-					return Right
-			Union += Right
-		if a in Union and b in Union:
-			return root.val
-		else:
-			return Union
+    def solve(self, root, a, b):
+        if root:
+            if root.val == a or root.val == b:
+                return root.val
+            left = self.solve(root.left, a, b)
+            right = self.solve(root.right, a, b)
+            if left and right:
+                return root.val
+            return left or right
