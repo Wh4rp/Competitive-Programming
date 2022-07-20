@@ -10,5 +10,3 @@ class Solution:
             self.solve(root.left)
             self.solve(root.right)
             return root
-        else:
-            return

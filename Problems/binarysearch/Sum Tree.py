@@ -5,11 +5,9 @@
 #         self.right = right
 class Solution:
     def solve(self, root):
-        def bt(Node):
-            if not Node or (not Node.left and not Node.right):
-                return True
-            else:
-                val_left = Node.left.val if Node.left else 0
-                val_right = Node.right.val if Node.right else 0
-                return (Node.val == (val_left + val_right)) and bt(Node.left) and bt(Node.right)
-        return bt(root)
+        if root and (root.left or root.right):
+            val_left = root.left.val if root.left else 0
+            val_right = root.right.val if root.right else 0
+            return root.val == val_left + val_right and self.solve(root.left) and self.solve(root.right)
+        else:
+            return True

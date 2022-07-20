@@ -6,12 +6,11 @@
 class Solution:
     def solve(self, root):
         def sum_tree(node, val):
-            if not node:
-                return 0
-            val = val * 10 + node.val
-            if not node.left and not node.right:
-                return val
+            if node:
+                val = val * 10 + node.val
+                left = sum_tree(node.left, val)
+                right = sum_tree(node.right, val)
+                return left + right if left + right else val
             else:
-                return sum_tree(node.left, val) + sum_tree(node.right, val)
-        ans = sum_tree(root, 0)
-        return ans
+                return 0
+        return sum_tree(root, 0)
