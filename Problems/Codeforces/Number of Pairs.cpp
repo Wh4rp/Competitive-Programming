@@ -18,13 +18,9 @@ int main() {
 	ll v[n]; rep(i, n) cin >> v[i];
    	sort(v, v + n);
 
-   	rep_(i, 1, n){
-   		if(v[i] < r){
-			ans += upper_bound(v, v + i, r - v[i]) - v;
-			ans -= lower_bound(v, v + i, l - v[i]) - v;
-   		}
-		else
-			break;
+   	rep(i, n - 1){
+		ans += upper_bound(v + i + 1, v + n, r - v[i]) - v;
+		ans -= lower_bound(v + i + 1, v + n, l - v[i]) - v;
    	}
    	cout << ans << '\n';
   }
