@@ -13,28 +13,20 @@ int main() {
   
   int t; cin >> t;
   while(t--){
-    int n, sum = 0; cin >> n;
-    
-    vector<int> v(n);
-    for(int& x : v){
-      cin >> x;
-      sum += x;
-    }
-    if(n == 1){
-      cout << "0\n";
-      continue;
-    }
-    if(sum % n != 0){
-      cout << "-1\n";
-    }
-    else{
-      int sol = 0;
-      for(int& x : v){
-        if(sum < x * n)
-          sol++;
-      }
-      cout << sol << "\n";
-    }
+  	ll n, l, r, ans = 0;
+  	cin >> n >> l >> r;
+	ll v[n]; rep(i, n) cin >> v[i];
+   	sort(v, v + n);
+
+   	rep_(i, 1, n){
+   		if(v[i] < r){
+			ans += upper_bound(v, v + i, r - v[i]) - v;
+			ans -= lower_bound(v, v + i, l - v[i]) - v;
+   		}
+		else
+			break;
+   	}
+   	cout << ans << '\n';
   }
   
   return 0;
