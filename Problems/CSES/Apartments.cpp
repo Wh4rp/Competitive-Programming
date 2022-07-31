@@ -12,17 +12,17 @@ int main() {
     cout.precision(10);
 
     int n, m, k, ans = 0; cin >> n >> m >> k;
-    int v[n], w[m];
-    rep(i, n) cin >> v[i];
-    rep(i, m) cin >> w[i];
-    sort(v, v + n);
-    sort(w, w + m);
+    int a[n], b[m];
+    rep(i, n) cin >> a[i];
+    rep(i, m) cin >> b[i];
+    sort(a, a + n);
+    sort(b, b + m);
     int i = 0, j = 0;
     while(i < n && j < m){
-        if(abs(v[i] - w[j]) <= k)
+        if(abs(a[i] - b[j]) <= k)
             i++, j++, ans++;
         else
-            w[j] < v[i]? j++ : i++;
+            b[j] < a[i]? j++ : i++;
     }
     cout << ans << '\n';
 
