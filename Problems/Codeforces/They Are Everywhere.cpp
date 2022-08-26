@@ -13,27 +13,26 @@ int main() {
 
     ll n, N, K = 0, i = 0, ans = 1000000;
     string home;
-    set<char> tipos;
-    vector<int> v(1000, 0);
+    vector<int> v(125, -1);
     cin >> n >> home;
 
-    rep(i, n)
-        tipos.insert(home[i]);
-    
-    N = tipos.size();
+    rep(i, n){
+      if(v[home[i]] == -1){
+        K++;
+        v[home[i]] = 0;
+      }
+    }
     
     rep_(j, 0, n){
-        if(v[home[j]] == 0)
-            K++;
-        
-        v[int(home[j])]++;
+        K -= (v[home[j]] == 0);
+        v[home[j]]++;
         
         while(v[home[i]] > 1){
             v[home[i]]--;
             i++;
         }
         
-        if(K == N)
+        if(K == 0)
             ans = min(ans, j - i + 1);
     }
     
