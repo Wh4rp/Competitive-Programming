@@ -8,6 +8,8 @@ int n;
 string s;
 int h[MAXN], p[MAXN];
 
+// Preprocess the powers of A  and the hashs of the string s[0..i]
+
 void preprocess() {
     p[0] = 1;
     for (int i = 1; i <= n; i++) {
@@ -18,6 +20,8 @@ void preprocess() {
         h[i] = (h[i + 1] * A + s[i]) % B;
     }
 }
+
+// Get the hash of the string s[i..j]
 
 int get_hash(int i, int j) {
     return (h[i] - h[j + 1] * p[j - i + 1] + B) % B;
