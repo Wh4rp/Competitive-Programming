@@ -8,7 +8,8 @@ int n;
 string s;
 int h[MAXN], p[MAXN];
 
-// Preprocess the powers of A  and the hashs of the string s[0..i]
+// Preprocess the powers of A and the hash
+// for each substring s[0..i]
 
 void preprocess() {
     p[0] = 1;
