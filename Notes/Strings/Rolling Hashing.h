@@ -27,3 +27,20 @@ void preprocess() {
 int get_hash(int i, int j) {
     return (h[i] - h[j + 1] * p[j - i + 1] + B) % B;
 }
+
+// Usage example
+
+int main() {
+    cin >> s;
+    n = s.size();
+    preprocess();
+    string t = "PABLO";
+    int m = t.size();
+    int h = get_hash(0, m - 1);
+    for (int i = 0; i + m - 1 < n; i++) {
+        if (get_hash(i, i + m - 1) == h) {
+            cout << i << '\n';
+            break;
+        }
+    }
+}
