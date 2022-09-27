@@ -1,5 +1,16 @@
 #include "../../Template.cpp"
 
+// Polynomial Rolling Hashing
+
+int pol_hash(string s) {
+    int A = 31, B = 1e9 + 7;
+    int ans = 0;
+    for(char c : s){
+        ans = (ans * A + c) % B;
+    }
+    return ans;
+}
+
 const int MAXN = 1e5 + 5;
 const int A = 31;
 const int B = 1e9 + 7;
@@ -34,13 +45,14 @@ int main() {
     cin >> s;
     n = s.size();
     preprocess();
-    string t = "PABLO";
-    int m = t.size();
-    int h = get_hash(0, m - 1);
+    string r = "PABLO";
+    int m = r.size();
+    int l = pol_hash(r);
     for (int i = 0; i + m - 1 < n; i++) {
-        if (get_hash(i, i + m - 1) == h) {
+        if (get_hash(i, i + m - 1) == l) {
             cout << i << '\n';
             break;
         }
     }
+    return 0;
 }
