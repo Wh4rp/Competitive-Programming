@@ -16,16 +16,16 @@ void preprocess() {
     for (int i = 1; i <= n; i++) {
         p[i] = (p[i - 1] * A) % B;
     }
-    h[n] = s[n - 1];
-    for (int i = n - 1; i >= 0; i--) {
-        h[i] = (h[i + 1] * A + s[i]) % B;
+    h[0] = s[0];
+    for (int i = 1; i < n; i++) {
+        h[i] = (h[i - 1] * A + s[i]) % B;
     }
 }
 
 // Get the hash of the string s[i..j]
 
 int get_hash(int i, int j) {
-    return (h[i] - h[j + 1] * p[j - i + 1] + B) % B;
+    return i != 0 ? (h[j] - h[i-1] * p[j-i+1] + B*B) % B : h[j];
 }
 
 // Usage example
