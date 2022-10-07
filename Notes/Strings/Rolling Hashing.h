@@ -5,7 +5,7 @@
 int pol_hash(string s) {
     int A = 31, B = 1e9 + 7;
     int ans = 0;
-    for(char c : s){
+    for (char c : s) {
         ans = (ans * A + c) % B;
     }
     return ans;
@@ -36,7 +36,7 @@ void preprocess() {
 // Get the hash of the string s[i..j]
 
 int get_hash(int i, int j) {
-    return i != 0 ? (h[j] - h[i-1] * p[j-i+1] + B*B) % B : h[j];
+    return i != 0 ? (h[j] - h[i - 1] * p[j - i + 1] + B * B) % B : h[j];
 }
 
 // Usage example
@@ -54,5 +54,6 @@ int main() {
             break;
         }
     }
+
     return 0;
 }
