@@ -2,58 +2,62 @@
 
 // Polynomial Rolling Hashing
 
-int pol_hash(string s) {
-    int A = 31, B = 1e9 + 7;
-    int ans = 0;
-    for (char c : s) {
-        ans = (ans * A + c) % B;
+const ll MAXN = 1e5 + 5;
+
+struct RollingHashing {
+    const ll A = 1777771, B[2] = {999727999, 1070777777};
+    ll h[2][MAXN], p[2][MAXN];
+    string S;
+
+    RollingHashing(string s) : S(s) { preprocess(s); }
+
+    ll pol_hash(string s) {
+        ll h0 = 0, h1 = 0;
+        ll n = s.size();
+        for (int i = n - 1; i >= 0; i--) {
+            h0 = (h0 * A + s[i]) % B[0];
+            h1 = (h1 * A + s[i]) % B[1];
+        }
+        return (h0 << 32) | h1;
     }
-    return ans;
-}
 
-const int MAXN = 1e5 + 5;
-const int A = 31;
-const int B = 1e9 + 7;
-
-int n;
-string s;
-int h[MAXN], p[MAXN];
-
-// Preprocess the powers of A and the hash
-// for each substring s[0..i]
-
-void preprocess() {
-    p[0] = 1;
-    for (int i = 1; i <= n; i++) {
-        p[i] = (p[i - 1] * A) % B;
+    void preprocess(string s) {
+        this->S = s;
+        ll n = s.size();
+        p[0][0] = 1, p[1][0] = 1;
+        for (int i = 1; i <= n; i++) {
+            p[0][i] = (p[0][i - 1] * A) % B[0];
+            p[1][i] = (p[1][i - 1] * A) % B[1];
+        }
+        h[0][n] = 0, h[1][n] = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            h[0][i] = (h[0][i + 1] * A + s[i]) % B[0];
+            h[1][i] = (h[1][i + 1] * A + s[i]) % B[1];
+        }
     }
-    h[0] = s[0];
-    for (int i = 1; i < n; i++) {
-        h[i] = (h[i - 1] * A + s[i]) % B;
+
+    ll get_hash(int i, int j) {
+        ll h0 = (h[0][i] - h[0][j] * p[0][j - i] + B[0] * B[0]) % B[0];
+        ll h1 = (h[1][i] - h[1][j] * p[1][j - i] + B[1] * B[1]) % B[1];
+        return (h0 << 32) | h1;
     }
-}
-
-// Get the hash of the string s[i..j]
-
-int get_hash(int i, int j) {
-    return i != 0 ? (h[j] - h[i - 1] * p[j - i + 1] + B * B) % B : h[j];
-}
+};
 
 // Usage example
 
 int main() {
-    cin >> s;
-    n = s.size();
-    preprocess();
-    string r = "PABLO";
-    int m = r.size();
-    int l = pol_hash(r);
-    for (int i = 0; i + m - 1 < n; i++) {
-        if (get_hash(i, i + m - 1) == l) {
-            cout << i << '\n';
-            break;
-        }
-    }
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.setf(ios::fixed);
+    cout.precision(10);
+
+    string s = "pablo";
+    RollingHashing rh(s);
+    cout << rh.get_hash(1, 5) << '\n';
+
+    ll h = rh.pol_hash("ablo");
+
+    cout << h << '\n';
 
     return 0;
 }
