@@ -42,9 +42,9 @@ class Trie {
                 }
             }
             if (!found)
-                return cur->leaf;
+                return false;
         }
-        return true;
+        return cur->leaf;
     }
 };
 
