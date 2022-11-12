@@ -30,7 +30,7 @@ int main() {
     multiset<int> heights;
     heights.insert(0);
 
-    int i = 0, n = events.size();
+    int i = 0, n = events.size(), height = 0;
 
     while (i < n) {
         do {
@@ -40,7 +40,10 @@ int main() {
                 heights.erase(heights.find(events[i].h));
         } while (i < n - 1 && events[i].x == events[i + 1].x && ++i);
 
-        cout << events[i].x << ' ' << *heights.rbegin() << " \n"[i == n - 1];
+        if (height != *heights.rbegin()) {
+            height = *heights.rbegin();
+            cout << events[i].x << ' ' << height << " \n"[i == n - 1];
+        }
         i++;
     }
 
