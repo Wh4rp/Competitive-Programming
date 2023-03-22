@@ -36,5 +36,4 @@
 /prueba
 /.vscode
 /tmp-contest
-in.txt
-out.txt
+*.txt
