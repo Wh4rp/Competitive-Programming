@@ -5,17 +5,9 @@ fun main() {
         val red = readInts()
         var m = readInt()
         val blue = readInts()
-        var acumlatedRed = red.runningReduce { acc, i -> acc + i }
-        var acumlatedBlue = blue.runningReduce { acc, i -> acc + i }
-        var ans = 0
-        for (intermedianValueRed in acumlatedRed) {
-            for (intermedianValueBlue in acumlatedBlue) {
-                ans = maxOf(ans, intermedianValueRed + intermedianValueBlue)
-            }
-        }
-        ans = maxOf(ans, acumlatedRed.maxOrNull() ?: 0)
-        ans = maxOf(ans, acumlatedBlue.maxOrNull() ?: 0)
-        println(ans)
+        var acumlatedRed = red.scan(0) { acc, i -> acc + i }
+        var acumlatedBlue = blue.scan(0) { acc, i -> acc + i }
+        println(maxOf(0, acumlatedRed.max() + acumlatedBlue.max()))
     }
 }
 
