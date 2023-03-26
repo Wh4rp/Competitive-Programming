@@ -9,16 +9,48 @@ fun main() {
             if (stack.isEmpty()) {
                 stack.push(c)
             } else {
-                if ((c == ')' && stack.peek() != ')') || (c == '?' && stack.peek() == '(')) {
+                if (c == ')' && stack.peek() == '(') {
                     stack.pop()
                 } else {
                     stack.push(c)
                 }
             }
         }
-        if (stack.size % 2 == 1 || stack.peek() == '(' || stack.peekLast() == ')') {
+        if (stack.size % 2 == 1) {
             println("NO")
+            return@repeat
         } else {
+            while (stack.isNotEmpty()) {
+                var c1 = stack.poll()
+                var c2 = stack.pollLast()
+                if (c1 == '?') {
+                    c1 = ')'
+                    if (stack.isNotEmpty()) {
+                        if (stack.peek() == '(') {
+                            stack.poll()
+                            stack.addLast(c2)
+                            continue
+                        }
+                    }
+                }
+                if (c2 == '?') {
+                    c2 = '('
+                    if (stack.isNotEmpty()) {
+                        if (stack.peekLast() == ')') {
+                            stack.pollLast()
+                            stack.addFirst(c1)
+                            continue
+                        }
+                    }
+                }
+                if (c1 == ')' && c2 == '(') {
+                    continue
+                } else {
+                    println("NO")
+                    return@repeat
+                }
+            }
+
             println("YES")
         }
     }
