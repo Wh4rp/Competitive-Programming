@@ -24,21 +24,20 @@ int main() {
         int j = 0, cero_pos = 0;
         while (j < v.size()) {
             if (v[j] >= 5) {
-                j++;
-                while (j < v.size() - 1 && v[j] == 9) {
+                while (j < v.size() - 1 && v[j + 1] == 9) {
                     j++;
                 }
-                if (j == v.size() - 1)
+                if (j + 1 == v.size() - 1)
                     v.push_back(0);
-                v[j]++;
-                for (int k = cero_pos; k < j; k++)
+                v[j + 1]++;
+                for (int k = cero_pos; k <= j; k++)
                     v[k] = 0;
-                cero_pos = j - 1;
+                cero_pos = j;
             }
             j++;
         }
 
-        rep(i, v.size()) cout << v[v.size() - 1 - i];
+        rep_(i, 1, v.size()) cout << v[v.size() - 1 - i];
         cout << '\n';
     }
 
