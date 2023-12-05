@@ -10,12 +10,14 @@ int main() {
     cin.tie(nullptr);
     cout.setf(ios::fixed);
     cout.precision(10);
-    
+
     // Make a dikstra algo with priority queue
     // O(m log n)
+    int n, m;
     cin >> n >> m;
     vector<vector<pair<int, int>>> g(n);
     rep(i, m){
+        int a, b, w;
         cin >> a >> b >> w;
         g[a].push_back({b, w});
         g[b].push_back({a, w});
@@ -33,12 +35,13 @@ int main() {
             continue;
         visited[u] = true;
         for(auto v: g[u]){
-            if(!visited[v.first]){
-                dist[v.first] = min(dist[v.first], dist[u] + v.second);
+            if(!visited[v.first] || dist[v.first] > dist[u] + v.second){
+                dist[v.first] = dist[u] + v.second;
                 pq.push({dist[v.first], v.first});
             }
         }
     }
+
     rep(i, n){
         cout << dist[i] << ' ';
     }
