@@ -10,11 +10,14 @@ int visited[300005];
 vector<vector<int>> g(300005, vector<int>());
 
 ll dfs(int u, int c) {
+    // marcar como vicitado
     visited[u] = 1;
     if (u == a || u == b)
         c++;
     ll ans = 0;
+    // veo sus vecinos
     for (int v : g[u]) {
+        // Verificacion de vecino valido a vicitar
         if (visited[v])
             continue;
         ans += dfs(v, c);
