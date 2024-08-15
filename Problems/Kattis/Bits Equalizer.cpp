@@ -34,13 +34,16 @@ int main(){
             count += count_01 + count_x0 + count_x1;
         }
         else {
-            if(count_x0 >= count_10){
-                count += count_10;
-                count_x0 -= count_10;
-                count += count_x0 + count_x1;
+            int count1 = min(count_10, count_x1);
+            count_x0 += count1;
+            count_x1 -= count1;
+            count_10 -= count1;
+            count += count1;
+            if (count_10){
+                count = -1;
             }
             else {
-                count = -1;
+                count += count_x0 + count_x1;
             }
         }
         cout << count << '\n';
