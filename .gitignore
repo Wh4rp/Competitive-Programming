@@ -37,6 +37,7 @@
 /prueba
 /.vscode
 /tmp-contest
+/selectivo
 *.txt
 
 # Tests
