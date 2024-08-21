@@ -17,7 +17,6 @@ int main() {
     while (cin >> n, n != 0) {
         genoma++;
         cout << "Genome " << genoma << '\n';
-        // Crear vector de 1 -> n
         vector<int> v(n);
         rep(i, n) v[i] = i + 1;
         int r;
