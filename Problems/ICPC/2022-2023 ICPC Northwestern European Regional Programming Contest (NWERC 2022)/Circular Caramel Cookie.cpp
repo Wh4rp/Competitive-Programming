@@ -5,24 +5,38 @@ using namespace std;
 #define repf(i,k,n) for(int i=k; i<n; i++)
 #define rep(i,n) for(int i=0; i<n; i++)
 typedef long long ll;
- 
-ll contarPuntos(long double r) {
-    ll ans = 0;
 
+ll my_sqrt(double x) {
+    ll l = 0, r = x + 10;
+    while(l != r) {
+        ll mid = (l + r) / 2;
+        if(mid * mid <= x)
+            l = mid + 1;
+        else
+            r = mid;
+    }
+    return l - 1;
+}
+ 
+ll contarPuntos(double r) {
+    ll ans = 0;
     for(ll i = 1; i <= r; i++) {
-        ans += floor(sqrt(r * r - i * i));
+        double i2 = i * i;
+        double r2 = r * r;
+        double r2_i2 = r2 - i2;
+        ans += my_sqrt(r2_i2);
     }
     
     return 4LL * ans;
 }
- 
+
 // el primero que es verdadero
-long double bs(ll x) {
-    long double l = 0, r = 1e6;
+double bs(ll x) {
+    double l = 0, r = 1e6;
     int cont = 100;
     while(l != r && cont != 0) {
-        long double mid = (l + r) / 2;
-        if(contarPuntos(mid) >= x)
+        double mid = (l + r) * 0.5;
+        if(contarPuntos(mid) > x)
             r = mid;
         else
             l = mid;
@@ -44,7 +58,7 @@ int main(){
     
     cout << bs(x) << '\n';
     
-    // cout << contarPuntos(1.5) << '\n';
+    // cout << my_sqrt(25) << '\n';
 
     return 0;
 }

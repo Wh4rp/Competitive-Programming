@@ -29,12 +29,7 @@ int main() {
         }
 
         int ans = 0;
-
-        // rep(i, len) {
-        //     cout << v[i] << " ";
-        // }
-        // cout << '\n';
-
+        
         if(len == 1) {
             cout << 1 << '\n';
             continue;
